@@ -6,6 +6,30 @@ import { generateToken } from '@/utils/auth';
 const router = express.Router();
 const prisma = new PrismaClient();
 
+/**
+ * @openapi
+ * /user/signup:
+ *   post:
+ *     description: Register a new user.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *               role:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: User registered successfully.
+ *       500:
+ *         description: Internal server error.
+ */
 router.post('/signup', async (req, res) => {
   const { email, password, role } = req.body;
 
@@ -24,6 +48,30 @@ router.post('/signup', async (req, res) => {
   }
 });
 
+/**
+ * @openapi
+ * /user/login:
+ *   post:
+ *     description: Authenticate a user and return a token.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Authentication successful, returns a token.
+ *       401:
+ *         description: Invalid credentials.
+ *       500:
+ *         description: Internal server error.
+ */
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
