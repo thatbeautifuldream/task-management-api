@@ -1,12 +1,13 @@
 import swaggerJsdoc from 'swagger-jsdoc';
+import packageJSON from '../package.json';
 
 const options: swaggerJsdoc.Options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Task Manager API',
-      version: '1.0.0',
-      description: 'API documentation for the Task Manager application',
+      title: packageJSON.name,
+      version: packageJSON.version,
+      description: packageJSON.description,
     },
     servers: [
       {

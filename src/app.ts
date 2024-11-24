@@ -1,11 +1,11 @@
-import express from 'express';
-import morgan from 'morgan';
-import helmet from 'helmet';
 import cors from 'cors';
+import express from 'express';
+import helmet from 'helmet';
+import morgan from 'morgan';
 
-import * as middlewares from './middlewares';
 import api from './api/v1';
 import MessageResponse from './interfaces/message-response';
+import * as middlewares from './middlewares';
 import { specs } from './swagger';
 
 require('dotenv').config();
@@ -42,6 +42,10 @@ app.get<{}, MessageResponse>('/', (req, res) => {
  *         description: A JSON object with API details.
  */
 app.use('/api/v1', api);
+
+app.get('/openapi.json', (req, res) => {
+  res.json(specs);
+});
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);

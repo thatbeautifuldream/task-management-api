@@ -31,9 +31,4 @@ routes.forEach(route => {
   router.use(route.path, route.route);
 });
 
-// OpenAPI JSON endpoint
-router.get('/openapi.json', (req, res) => {
-  res.json(specs);
-});
-
 export default router;
