@@ -4,7 +4,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 
 import * as middlewares from './middlewares';
-import api from './api';
+import api from './api/v1';
 import MessageResponse from './interfaces/message-response';
 
 require('dotenv').config();
@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.get<{}, MessageResponse>('/', (req, res) => {
   res.json({
-    message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄',
+    message: `Task Manager API - ${process.env.NODE_ENV}`,
   });
 });
 

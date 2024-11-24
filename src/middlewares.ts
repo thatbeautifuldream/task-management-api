@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
-import { verifyToken } from './utils/auth';
 
 import ErrorResponse from './interfaces/error-response';
+import { verifyToken } from './utils/auth';
 
 declare global {
   namespace Express {
@@ -17,8 +17,13 @@ export function notFound(req: Request, res: Response, next: NextFunction) {
   next(error);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function errorHandler(err: Error, req: Request, res: Response<ErrorResponse>) {
+export function errorHandler(
+  err: Error,
+  req: Request,
+  res: Response<ErrorResponse>,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  next: NextFunction,
+) {
   const statusCode = res.statusCode !== 200 ? res.statusCode : 500;
   res.status(statusCode);
   res.json({

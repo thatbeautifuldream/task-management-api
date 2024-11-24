@@ -4,9 +4,9 @@
   "description": "A task management API",
   "main": "src/index.ts",
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "dev": "nodemon src/index.ts",
-    "build": "tsc",
+    "start": "ts-node -r tsconfig-paths/register src/index.ts",
+    "dev": "nodemon -r tsconfig-paths/register src/index.ts",
+    "build": "tsc && tsc-alias",
     "start:dist": "node dist/src/index.js",
     "lint": "eslint --fix src test",
     "test": "jest",
@@ -55,6 +55,8 @@
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.10",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.7.2"
   }
 }
