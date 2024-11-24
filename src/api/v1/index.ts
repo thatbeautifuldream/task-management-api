@@ -3,7 +3,6 @@ import express from 'express';
 import MessageResponse from '@/interfaces/message-response';
 import columnRoutes from './column-routes';
 import userRoutes from './user-routes';
-import { specs } from '@/swagger';
 
 const router = express.Router();
 
