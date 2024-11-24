@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { verifyToken } from './utils/auth';
 
-import ErrorResponse from './interfaces/ErrorResponse';
+import ErrorResponse from './interfaces/error-response';
 
 declare global {
   namespace Express {
